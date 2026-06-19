@@ -1,50 +1,88 @@
 # Movie Finder
 
-Mini projet `frontend + backend Node` pour rechercher des films avec l'API OMDb sans exposer la clé dans le navigateur.
+Small `frontend + Node backend` project that lets users search movies and series with the OMDb API without exposing the API key in the browser.
 
-## Fonctionnalités
+## Stack
 
-- recherche de films ou séries par mots-clés
-- affichage sous forme de cartes avec affiche, titre, année et bouton `Read More`
-- chargement asynchrone via `fetch`
-- détail d'un film dans une modal Bootstrap
-- apparition progressive des cartes avec `IntersectionObserver`
-- lazy loading des affiches
-- proxy backend pour garder la clé API côté serveur
+- HTML
+- CSS
+- Vanilla JavaScript
+- Bootstrap 5
+- Node.js HTTP server
+- OMDb API
 
-## Lancer le projet
+## Features
 
-1. Récupère une clé API sur `http://www.omdbapi.com/apikey.aspx`
-2. Copie `.env.example` en `.env`
-3. Remplace la valeur de `OMDB_API_KEY` dans `.env`
-4. Lance le serveur :
+- search movies or series by keyword
+- display results as cards with poster, title, year, and a `Read More` button
+- asynchronous data loading with `fetch`
+- movie details displayed in a Bootstrap modal
+- progressive reveal on scroll with `IntersectionObserver`
+- lazy loading for posters
+- backend proxy to keep the OMDb API key on the server side
+
+## Run the project
+
+1. Get an API key from `http://www.omdbapi.com/apikey.aspx`
+2. Copy `.env.example` to `.env`
+3. Set your key in `.env`
+
+```env
+OMDB_API_KEY=your_api_key_here
+```
+
+4. Start the server:
 
 ```bash
 pnpm dev
 ```
 
-5. Ouvre `http://localhost:3000`
-6. Recherche un film
+5. Open `http://127.0.0.1:3000`
 
-Alternative :
+Alternative:
 
 ```bash
 bin/dev
 ```
 
-Alternative rapide :
+Quick fallback:
 
-- tu peux aussi remplacer directement `PUT_YOUR_OMDB_API_KEY_HERE` dans `server.js`
-- c'est acceptable pour l'exercice, mais moins propre que `.env`
+- you can also replace `PUT_YOUR_OMDB_API_KEY_HERE` directly in `server.js`
+- this works for the exercise, but `.env` is cleaner
 
-## Déploiement
+## Build
 
-Le projet ne peut plus être publié sur GitHub Pages seul, car la clé API reste côté serveur.
+There is no build step in this project.
 
-Tu dois déployer sur une plateforme qui supporte Node.js :
+- no bundler
+- no transpiler
+- no static compilation pipeline
+
+The app runs directly with the local Node server:
+
+```bash
+pnpm dev
+```
+
+or:
+
+```bash
+bin/dev
+```
+
+## Notes
+
+- do not open `index.html` directly
+- do not use Live Server for this version
+- the app must be opened through the local Node server because the frontend calls backend routes such as `/api/search`
+
+## Deployment
+
+This project cannot be hosted on GitHub Pages alone because the API key stays on the server side.
+
+Use a platform that supports Node.js, such as:
 
 - Render
 - Railway
 - Vercel
-- Netlify Functions si tu refactors en serverless
-# filmfinder
+- Netlify Functions after a serverless refactor
