@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Finder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav class="topbar navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand topbar__brand" href="#results">
+          <span class="topbar__logo" aria-hidden="true">
+            <span class="topbar__logo-core"></span>
+            <span class="topbar__logo-ring"></span>
+          </span>
+          <span class="topbar__brand-text">Movie Finder</span>
+        </a>
+        <button
+          class="navbar-toggler topbar__toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#main-nav"
+          aria-controls="main-nav"
+          aria-expanded="false"
+          aria-label="Ouvrir la navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="main-nav" class="collapse navbar-collapse">
+          <form id="search-form" class="topbar__search ms-auto" role="search">
+            <label for="search-input" class="visually-hidden">Chercher un film</label>
+            <input
+              id="search-input"
+              class="form-control topbar__input"
+              type="text"
+              placeholder="Chercher un film"
+              autocomplete="off"
+            />
+            <button id="search-button" class="btn topbar__button" type="submit">
+              Rechercher
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <main class="app-shell py-4 py-lg-4">
+      <div class="container">
+        <section class="feedback-wrap mb-3">
+          <div id="feedback" class="alert d-none mb-0" role="alert"></div>
+        </section>
+
+        <section class="results-shell">
+          <div class="results-toolbar mb-4">
+            <div>
+              <p class="results-toolbar__eyebrow mb-2">Catalogue</p>
+              <h2 class="results-toolbar__title mb-1">Résultats</h2>
+              <p id="results-summary" class="results-toolbar__summary mb-0">
+                Chargement des films...
+              </p>
+            </div>
+            <div
+              id="loading-indicator"
+              class="spinner-border results-toolbar__spinner d-none"
+              role="status"
+            >
+              <span class="visually-hidden">Chargement...</span>
+            </div>
+          </div>
+
+          <div id="results" class="row g-4"></div>
+        </section>
+      </div>
+    </main>
+
+    <div class="modal fade" id="movie-modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content movie-modal">
+          <div class="modal-header movie-modal__header">
+            <div>
+              <p id="modal-type" class="movie-modal__type mb-1"></p>
+              <h3 id="modal-title" class="modal-title movie-modal__title mb-0"></h3>
+            </div>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Fermer"
+            ></button>
+          </div>
+          <div class="modal-body movie-modal__body">
+            <div class="row g-4">
+              <div class="col-12 col-md-4">
+                <img
+                  id="modal-poster"
+                  class="img-fluid rounded modal-poster"
+                  src=""
+                  alt=""
+                />
+              </div>
+              <div class="col-12 col-md-8">
+                <div class="movie-modal__badges d-flex flex-wrap gap-2 mb-3">
+                  <span id="modal-year" class="badge movie-modal__badge"></span>
+                  <span id="modal-runtime" class="badge movie-modal__badge"></span>
+                  <span id="modal-genre" class="badge movie-modal__badge movie-modal__badge--light"></span>
+                </div>
+                <p id="modal-plot" class="movie-modal__plot mb-4"></p>
+                <dl class="row mb-0 movie-modal__meta">
+                  <dt class="col-sm-4">Réalisateur</dt>
+                  <dd id="modal-director" class="col-sm-8"></dd>
+
+                  <dt class="col-sm-4">Acteurs</dt>
+                  <dd id="modal-actors" class="col-sm-8"></dd>
+
+                  <dt class="col-sm-4">Note IMDb</dt>
+                  <dd id="modal-rating" class="col-sm-8"></dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
